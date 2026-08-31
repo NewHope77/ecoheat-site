@@ -85,21 +85,22 @@
   .burger{display:none;background:none;border:none;color:var(--forest);cursor:pointer;padding:6px}
   .burger svg{width:28px;height:28px}
 
-  /* Hero */
-  .hero{background:linear-gradient(160deg,#f4faf7 0%,#eaf4ef 55%,#e3f0ea 100%);padding:0;overflow:hidden}
-  .hero-grid{max-width:1140px;margin:0 auto;padding:70px 20px 80px;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
-  .hero h1{font-size:clamp(1.95rem,4vw,3.05rem);font-weight:800;line-height:1.14;color:var(--forest);letter-spacing:-.5px}
-  .hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--orange),var(--flame));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero .sub{margin-top:20px;font-size:1.08rem;color:var(--muted);max-width:540px}
+  /* Hero — baner */
+  .hero{position:relative;overflow:hidden;background:#0b2b24;isolation:isolate}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:70% center}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(6,26,22,.90) 0%,rgba(6,26,22,.78) 30%,rgba(6,26,22,.42) 52%,rgba(6,26,22,.06) 72%,rgba(6,26,22,0) 86%)}
+  .hero-inner{position:relative;z-index:2;max-width:1140px;margin:0 auto;padding:104px 20px 112px;min-height:600px;display:flex;align-items:center}
+  .hero-content{max-width:640px}
+  .hero h1{font-size:clamp(2rem,4.2vw,3.15rem);font-weight:800;line-height:1.14;color:#fff;letter-spacing:-.5px;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+  .hero h1 em{font-style:normal;background:linear-gradient(120deg,#ffb35c,#ff7a45);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{margin-top:20px;font-size:1.08rem;color:#d3e6df;max-width:540px;text-shadow:0 1px 10px rgba(0,0,0,.3)}
   .hero .cta-row{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
-  .hero-badges{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
-  .hero-badges li{background:rgba(255,255,255,.85);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:.88rem;font-weight:600;color:var(--forest);display:flex;align-items:center;gap:8px}
-  .hero-badges svg{width:17px;height:17px;stroke:var(--green);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-  .hero-visual{position:relative}
-  .hero-visual img{border-radius:18px;box-shadow:0 24px 50px rgba(14,59,50,.18);width:100%;aspect-ratio:4/5;object-fit:cover}
-  .hero-card{position:absolute;left:-26px;bottom:34px;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:18px 22px;border-left:4px solid var(--orange);max-width:230px}
-  .hero-card .big{font-size:1.5rem;font-weight:800;color:var(--forest);line-height:1.1}
-  .hero-card .small{font-size:.85rem;color:var(--muted);margin-top:4px}
+  .hero .btn-ghost{border-color:rgba(255,255,255,.75);color:#fff}
+  .hero .btn-ghost:hover{background:#fff;color:var(--forest)}
+  .hero-badges{margin-top:38px;display:flex;gap:12px;flex-wrap:wrap}
+  .hero-badges li{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.26);border-radius:10px;padding:10px 16px;font-size:.88rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px;backdrop-filter:blur(6px)}
+  .hero-badges svg{width:17px;height:17px;stroke:#8ee0b4;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
   /* Trust strip */
   .trust{background:var(--forest);color:#fff;padding:26px 20px}
@@ -232,9 +233,7 @@
   .callbar a{flex:1;font-size:.92rem;padding:13px 10px}
 
   @media(max-width:980px){
-    .hero-grid{grid-template-columns:1fr;gap:40px;padding:52px 20px 64px}
-    .hero-visual{max-width:440px}
-    .hero-card{left:auto;right:-10px}
+    .hero-inner{padding:70px 20px 78px;min-height:520px}
     .plans{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}
     .why-grid{grid-template-columns:repeat(2,1fr)}
     .fb-block{grid-template-columns:1fr}
@@ -255,6 +254,10 @@
   }
   @media(max-width:680px){
     section{padding:60px 18px}
+    .hero-inner{padding:56px 18px 62px;min-height:auto}
+    .hero-bg img{object-position:center 62%}
+    .hero::after{background:linear-gradient(180deg,rgba(6,26,22,.92) 0%,rgba(6,26,22,.80) 42%,rgba(6,26,22,.55) 72%,rgba(6,26,22,.35) 100%)}
+    .hero .sub{max-width:none}
     .trust .wrap{grid-template-columns:repeat(2,1fr);gap:22px}
     .includes ul{grid-template-columns:1fr}
     .gallery{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -302,7 +305,11 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-grid">
+  <picture class="hero-bg">
+    <source media="(max-width:680px)" srcset="assets/hero-banner-mobile.jpg">
+    <img src="assets/hero-banner.jpg" alt="Pompa ciepła zamontowana przy nowoczesnym domu jednorodzinnym" width="2200" height="940" fetchpriority="high">
+  </picture>
+  <div class="hero-inner">
     <div class="hero-content">
       <h1>Pompy ciepła z <em>profesjonalnym montażem</em></h1>
       <p class="sub">Kompletne pakiety z urządzeniem, montażem i uruchomieniem — bez ukrytych kosztów. Dobieramy moc pompy pod Twój dom, instalujemy i zostajemy z Tobą po montażu.</p>
@@ -318,13 +325,6 @@
         <li><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.9 7 22l5-3 5 3-1.2-8.1"/></svg> Autoryzowany instalator</li>
         <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg> 7 lat doświadczenia</li>
       </ul>
-    </div>
-    <div class="hero-visual">
-      <img src="assets/realizacje/pompa-ciepla-zewnetrzna.jpg" alt="Zamontowana pompa ciepła — jednostka zewnętrzna, realizacja EcoHeat" width="823" height="823">
-      <div class="hero-card">
-        <div class="big">Bezpłatna wycena</div>
-        <div class="small">dobór urządzenia<br>i wycena bez opłat</div>
-      </div>
     </div>
   </div>
 </section>

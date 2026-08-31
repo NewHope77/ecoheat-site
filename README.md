@@ -20,6 +20,15 @@ Zastępuje starą stronę na Google Sites (ecoheatab.pl).
 - ta sama domena: ecoheatab.pl
 - bez hostingu → GitHub Pages
 
+## Baner na stronie głównej
+`assets/hero-banner.jpg` (+ wersja mobilna) zbudowany z **oficjalnej wizualizacji marketingowej Panasonic Aquarea**
+(źródło: cdn.aircon.panasonic.eu, materiały prasowe serii Aquarea L). Tło rozszerzone w lewo pod tekst.
+
+⚠️ To materiał chroniony prawem autorskim Panasonic. Autoryzowani instalatorzy zwykle mogą korzystać
+z materiałów marketingowych producenta — **klient powinien to potwierdzić u swojego dystrybutora Panasonic**.
+Alternatywa: własne zdjęcie realizacji w wysokiej rozdzielczości (wtedy podmieniamy plik).
+Na darmowych stockach (Pexels/Unsplash/Pixabay) nie ma zdjęcia pompy bez logo konkurencji (alpha innotec).
+
 ## Do uzupełnienia od klienta
 - lepszej jakości zdjęcia realizacji (obecne pobrane z FB, max ~800 px)
 - logo w oryginale (wektor / PNG bez tła) — obecne odtworzone z JPG
