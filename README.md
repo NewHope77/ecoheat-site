@@ -37,6 +37,23 @@ z materiałów marketingowych producenta — **klient powinien to potwierdzić u
 Alternatywa: własne zdjęcie realizacji w wysokiej rozdzielczości — wtedy podmieniamy plik.
 Na darmowych stockach (Pexels/Unsplash/Pixabay) nie ma zdjęcia pompy ciepła bez logo konkurencji (alpha innotec).
 
+## Wydajność
+
+Co zostało zrobione (01.09.2026), bo strona „doładowywała się" przy przewijaniu:
+- **WebP zamiast JPEG/PNG** dla banera, logo i galerii (`<picture>` z fallbackiem do .jpg/.png).
+  Baner 159 → 45 KB, logo 123 → 30 KB, galeria 394 → 230 KB. Jakość bez zmian.
+- **Usunięty `backdrop-filter`** z przyklejonego nagłówka i plakietek w banerze — rozmycie tła
+  wymuszało przerysowanie przy każdej klatce przewijania; to była główna przyczyna „ciężkiego" scrolla.
+- **Fonty self-hosted** (`assets/fonts/manrope-*.woff2`, font zmienny 400–800, 39 KB razem)
+  zamiast Google Fonts — zero zapytań do obcych domen i koniec z blokującym renderowanie arkuszem.
+- **Wymiary i `decoding="async"`** przy wszystkich obrazkach + stała wysokość ramki Facebooka
+  ze szkieletem pod spodem — nic nie przeskakuje podczas wczytywania.
+- Wtyczka Facebooka zostaje na natywnym `loading="lazy"` (bez JS) — wczytuje się dopiero przy
+  sekcji realizacji, ale bez ryzyka, że skrypt zawiedzie.
+
+Efekt na czystym cache: DOMContentLoaded 608 → 327 ms, load 2304 → 398 ms,
+pierwsze wczytanie 210 → 142 KB, zapytania do obcych domen przy starcie: 2 → 0.
+
 ## Do uzupełnienia od klienta
 - lepszej jakości zdjęcia realizacji (obecne pobrane z FB, max ~800 px)
 - logo w oryginale (wektor / PNG bez tła) — obecne odtworzone z JPG

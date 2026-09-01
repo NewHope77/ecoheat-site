@@ -24,10 +24,17 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
 <link rel="apple-touch-icon" href="assets/favicon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin-ext.woff2" crossorigin>
 <style>
+  /* Manrope — font zmienny, self-hosted (400–800 z jednego pliku) */
+  @font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;
+    src:url(assets/fonts/manrope-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;
+    src:url(assets/fonts/manrope-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
   :root{
     --forest:#0e3b32;
     --green:#17795f;
@@ -74,8 +81,9 @@
   .topbar a:hover{color:#fff}
 
   /* Header */
-  header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--border)}
   .header-inner{max-width:1140px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .logo picture{display:block}
   .logo img{height:42px;width:auto}
   nav ul{display:flex;gap:24px}
   nav a{font-size:.92rem;font-weight:600;color:var(--text);transition:color .2s;white-space:nowrap}
@@ -99,7 +107,7 @@
   .hero .btn-ghost{border-color:rgba(255,255,255,.75);color:#fff}
   .hero .btn-ghost:hover{background:#fff;color:var(--forest)}
   .hero-badges{margin-top:38px;display:flex;gap:12px;flex-wrap:wrap}
-  .hero-badges li{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.26);border-radius:10px;padding:10px 16px;font-size:.88rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px;backdrop-filter:blur(6px)}
+  .hero-badges li{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.26);border-radius:10px;padding:10px 16px;font-size:.88rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px}
   .hero-badges svg{width:17px;height:17px;stroke:#8ee0b4;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
   /* Trust strip */
@@ -157,7 +165,10 @@
   .fb-block{margin-top:44px;display:grid;grid-template-columns:1fr 500px;gap:38px;align-items:start;background:#fff;border:1px solid var(--border);border-radius:16px;padding:34px}
   .fb-block h3{font-size:1.3rem;margin-bottom:12px}
   .fb-block p{color:var(--muted);margin-bottom:14px;font-size:.97rem}
-  .fb-embed{border-radius:12px;overflow:hidden;background:var(--bg-soft);min-height:520px}
+  .fb-embed{position:relative;border-radius:12px;overflow:hidden;background:var(--bg-soft);height:640px}
+  .fb-embed .skeleton{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--muted);font-size:.9rem;text-align:center;padding:24px}
+  .fb-embed .skeleton svg{width:34px;height:34px;opacity:.5}
+  .fb-embed iframe{position:relative;z-index:1}
   .fb-embed iframe{border:none;overflow:hidden;width:100%;height:640px;display:block}
 
   /* Proces */
@@ -177,6 +188,7 @@
   .about-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:32px}
   .about-card .logo-chip{background:#fff;border-radius:14px;padding:22px 26px;margin:0 auto 26px;max-width:260px}
   .about-card .logo-chip img{width:100%}
+  .about-card .logo-chip picture{display:block}
   .about-card dl{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:.94rem}
   .about-card dt{color:#8fbfb1;white-space:nowrap}
   .about-card dd{color:#fff;font-weight:600}
@@ -282,7 +294,7 @@
 
 <header>
   <div class="header-inner">
-    <a href="#" class="logo" aria-label="EcoHeat — strona główna"><img src="assets/logo-horizontal.png" alt="EcoHeat — pompy ciepła" width="866" height="300"></a>
+    <a href="#" class="logo" aria-label="EcoHeat — strona główna"><picture><source type="image/webp" srcset="assets/logo-horizontal.webp"><img src="assets/logo-horizontal.png" alt="EcoHeat — pompy ciepła" width="640" height="221" fetchpriority="high"></picture></a>
     <nav id="nav">
       <ul>
         <li><a href="#oferta">Oferta</a></li>
@@ -306,8 +318,10 @@
 <!-- HERO -->
 <section class="hero">
   <picture class="hero-bg">
+    <source media="(max-width:680px)" type="image/webp" srcset="assets/hero-banner-mobile.webp">
     <source media="(max-width:680px)" srcset="assets/hero-banner-mobile.jpg">
-    <img src="assets/hero-banner.jpg" alt="Pompa ciepła zamontowana przy nowoczesnym domu jednorodzinnym" width="2200" height="940" fetchpriority="high">
+    <source type="image/webp" srcset="assets/hero-banner.webp">
+    <img src="assets/hero-banner.jpg" alt="Pompa ciepła zamontowana przy nowoczesnym domu jednorodzinnym" width="2200" height="940" fetchpriority="high" decoding="async">
   </picture>
   <div class="hero-inner">
     <div class="hero-content">
@@ -479,12 +493,12 @@
     </div>
 
     <div class="gallery">
-      <figure><img src="assets/realizacje/pompa-ciepla-zewnetrzna.jpg" alt="Pompa ciepła — jednostka zewnętrzna po montażu" loading="lazy"><figcaption>Jednostka zewnętrzna po montażu</figcaption></figure>
-      <figure><img src="assets/realizacje/zasobnik-cwu.jpg" alt="Zasobnik ciepłej wody użytkowej z instalacją hydrauliczną" loading="lazy"><figcaption>Zasobnik CWU i szafa hydrauliczna</figcaption></figure>
-      <figure><img src="assets/realizacje/rozdzielacz-ogrzewania.jpg" alt="Rozdzielacz instalacji grzewczej" loading="lazy"><figcaption>Podłączenie rozdzielaczy</figcaption></figure>
-      <figure><img src="assets/realizacje/pompa-ciepla-monoblok.jpg" alt="Pompa ciepła monoblok posadowiona przy budynku" loading="lazy"><figcaption>Monoblok na podstawie betonowej</figcaption></figure>
-      <figure><img src="assets/realizacje/montaz-jednostki-zewnetrznej.jpg" alt="Montaż jednostki zewnętrznej pompy ciepła" loading="lazy"><figcaption>Posadowienie jednostki zewnętrznej</figcaption></figure>
-      <figure><img src="assets/realizacje/ogrzewanie-podlogowe.jpg" alt="Instalacja współpracująca z ogrzewaniem podłogowym" loading="lazy"><figcaption>Współpraca z ogrzewaniem podłogowym</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="assets/realizacje/pompa-ciepla-zewnetrzna.webp"><img src="assets/realizacje/pompa-ciepla-zewnetrzna.jpg" alt="Pompa ciepła — jednostka zewnętrzna po montażu" width="760" height="760" loading="lazy" decoding="async"></picture><figcaption>Jednostka zewnętrzna po montażu</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="assets/realizacje/zasobnik-cwu.webp"><img src="assets/realizacje/zasobnik-cwu.jpg" alt="Zasobnik ciepłej wody użytkowej z instalacją hydrauliczną" width="760" height="760" loading="lazy" decoding="async"></picture><figcaption>Zasobnik CWU i szafa hydrauliczna</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="assets/realizacje/rozdzielacz-ogrzewania.webp"><img src="assets/realizacje/rozdzielacz-ogrzewania.jpg" alt="Rozdzielacz instalacji grzewczej" width="760" height="760" loading="lazy" decoding="async"></picture><figcaption>Podłączenie rozdzielaczy</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="assets/realizacje/pompa-ciepla-monoblok.webp"><img src="assets/realizacje/pompa-ciepla-monoblok.jpg" alt="Pompa ciepła monoblok posadowiona przy budynku" width="760" height="760" loading="lazy" decoding="async"></picture><figcaption>Monoblok na podstawie betonowej</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="assets/realizacje/montaz-jednostki-zewnetrznej.webp"><img src="assets/realizacje/montaz-jednostki-zewnetrznej.jpg" alt="Montaż jednostki zewnętrznej pompy ciepła" width="760" height="760" loading="lazy" decoding="async"></picture><figcaption>Posadowienie jednostki zewnętrznej</figcaption></figure>
+      <figure><picture><source type="image/webp" srcset="assets/realizacje/ogrzewanie-podlogowe.webp"><img src="assets/realizacje/ogrzewanie-podlogowe.jpg" alt="Instalacja współpracująca z ogrzewaniem podłogowym" width="760" height="760" loading="lazy" decoding="async"></picture><figcaption>Współpraca z ogrzewaniem podłogowym</figcaption></figure>
     </div>
 
     <div class="fb-block">
@@ -503,7 +517,11 @@
           </a>
         </div>
       </div>
-      <div class="fb-embed">
+      <div class="fb-embed" id="fb-embed">
+        <div class="skeleton" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#1877f2"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+          Wczytywanie postów z Facebooka…
+        </div>
         <iframe title="Realizacje EcoHeat na Facebooku"
           src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fecoheatab&tabs=timeline&width=500&height=640&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
           width="500" height="640" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" loading="lazy"
@@ -558,7 +576,7 @@
         <p>Nie sprzedajemy „najtańszej pompy z katalogu”. Doradzamy rozwiązanie, które faktycznie sprawdzi się w Twoim domu — nawet jeśli oznacza to, że odradzimy Ci droższy wariant.</p>
       </div>
       <div class="about-card">
-        <div class="logo-chip"><img src="assets/logo-horizontal.png" alt="EcoHeat" width="866" height="300"></div>
+        <div class="logo-chip"><picture><source type="image/webp" srcset="assets/logo-horizontal.webp"><img src="assets/logo-horizontal.png" alt="EcoHeat" width="640" height="221" loading="lazy" decoding="async"></picture></div>
         <dl>
           <dt>Firma</dt><dd>EcoHeat Agnieszka Belka</dd>
           <dt>NIP</dt><dd>911 195 80 76</dd>
@@ -687,7 +705,7 @@
 <footer>
   <div class="foot-grid">
     <div>
-      <div class="flogo-chip"><img class="flogo" src="assets/logo-horizontal.png" alt="EcoHeat" width="866" height="300"></div>
+      <div class="flogo-chip"><picture><source type="image/webp" srcset="assets/logo-horizontal.webp"><img class="flogo" src="assets/logo-horizontal.png" alt="EcoHeat" width="640" height="221" loading="lazy" decoding="async"></picture></div>
       <p>Profesjonalny montaż pomp ciepła Panasonic. Realizujemy Twoje marzenia o ciepłym domu.</p>
       <p style="margin-top:14px">EcoHeat Agnieszka Belka<br>NIP: 911 195 80 76<br>ul. Porzeczkowa 6, 98-420 Pichlice</p>
     </div>
@@ -734,6 +752,18 @@
   nav.addEventListener('click', function(e){
     if (e.target.tagName === 'A') { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); }
   });
+
+  // Ramka Facebooka ma staly rozmiar i szkielet pod spodem, wiec nic nie przeskakuje.
+  // Po jej wczytaniu szkielet znika.
+  (function(){
+    var box = document.getElementById('fb-embed');
+    if (!box) return;
+    var frame = box.querySelector('iframe');
+    frame.addEventListener('load', function(){
+      var sk = box.querySelector('.skeleton');
+      if (sk) sk.remove();
+    });
+  })();
 </script>
 
 <script type="application/ld+json">
