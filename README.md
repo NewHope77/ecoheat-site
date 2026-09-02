@@ -17,6 +17,7 @@ Zastępuje starą stronę na Google Sites (ecoheatab.pl).
 - tylko pompy ciepła Panasonic, BEZ oferty ogrzewania podłogowego ✔
 - zdjęcia realizacji ✔ + realizacje jako posty z fanpage'a ✔ (Facebook Page Plugin)
 - linki do fanpage'a ✔
+- kanał YouTube @EcoHeatAB ✔ (dodany 02.09.2026 na prośbę klienta — sekcja Realizacje, Kontakt, stopka, JSON-LD)
 - ta sama domena: ecoheatab.pl
 - bez hostingu → GitHub Pages
 
