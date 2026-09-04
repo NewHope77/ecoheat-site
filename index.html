@@ -162,6 +162,26 @@
   .gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .4s}
   .gallery figure:hover img{transform:scale(1.05)}
   .gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 13px;color:#fff;font-size:.88rem;font-weight:600;background:linear-gradient(transparent,rgba(14,59,50,.85))}
+  /* Filmy z YouTube — miniatura teraz, odtwarzacz dopiero po kliknieciu */
+  .yt-block{margin-top:46px}
+  .yt-block h3{font-size:1.3rem;margin-bottom:6px}
+  .yt-block .lead{color:var(--muted);font-size:.97rem;margin-bottom:22px;max-width:680px}
+  .yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .yt-card{display:flex;flex-direction:column;gap:11px;padding:0;border:none;background:none;cursor:pointer;font:inherit;text-align:left}
+  .yt-thumb{position:relative;display:block;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:#0b2b24;aspect-ratio:16/9}
+  .yt-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+  .yt-card:hover .yt-thumb img{transform:scale(1.05)}
+  .yt-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:44px;border-radius:12px;background:rgba(255,0,0,.92);box-shadow:0 6px 18px rgba(0,0,0,.35);transition:background .2s,transform .2s}
+  .yt-play::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-40%,-50%);border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent #fff}
+  .yt-card:hover .yt-play{background:#f00;transform:translate(-50%,-50%) scale(1.08)}
+  .yt-card:focus-visible .yt-thumb{outline:3px solid var(--green);outline-offset:3px}
+  .yt-name{font-weight:600;font-size:.95rem;color:var(--forest);line-height:1.42;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .yt-card:hover .yt-name{color:var(--green)}
+  .yt-thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .fb-embed .skeleton.failed{gap:10px;line-height:1.5}
+  .fb-embed .skeleton.failed b{color:var(--forest);font-size:1rem}
+  .fb-embed .skeleton.failed span{max-width:300px}
+
   .fb-block{margin-top:44px;display:grid;grid-template-columns:1fr 500px;gap:38px;align-items:start;background:#fff;border:1px solid var(--border);border-radius:16px;padding:34px}
   .fb-block h3{font-size:1.3rem;margin-bottom:12px}
   .fb-block p{color:var(--muted);margin-bottom:14px;font-size:.97rem}
@@ -249,6 +269,7 @@
     .plans{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}
     .why-grid{grid-template-columns:repeat(2,1fr)}
     .fb-block{grid-template-columns:1fr}
+    .yt-grid{grid-template-columns:repeat(2,1fr)}
     .steps{grid-template-columns:repeat(2,1fr)}
     .about-grid{grid-template-columns:1fr;gap:36px}
     .contact-grid{grid-template-columns:1fr}
@@ -273,6 +294,7 @@
     .trust .wrap{grid-template-columns:repeat(2,1fr);gap:22px}
     .includes ul{grid-template-columns:1fr}
     .gallery{grid-template-columns:repeat(2,1fr);gap:12px}
+    .yt-grid{grid-template-columns:1fr}
     .why-grid,.steps{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr}
     .includes,.contact-card,.fb-block{padding:24px}
@@ -499,6 +521,33 @@
       <figure><picture><source type="image/webp" srcset="assets/realizacje/pompa-ciepla-monoblok.webp"><img src="assets/realizacje/pompa-ciepla-monoblok.jpg" alt="Pompa ciepła monoblok posadowiona przy budynku" width="760" height="760" loading="lazy" decoding="async"></picture><figcaption>Monoblok na podstawie betonowej</figcaption></figure>
       <figure><picture><source type="image/webp" srcset="assets/realizacje/montaz-jednostki-zewnetrznej.webp"><img src="assets/realizacje/montaz-jednostki-zewnetrznej.jpg" alt="Montaż jednostki zewnętrznej pompy ciepła" width="760" height="760" loading="lazy" decoding="async"></picture><figcaption>Posadowienie jednostki zewnętrznej</figcaption></figure>
       <figure><picture><source type="image/webp" srcset="assets/realizacje/ogrzewanie-podlogowe.webp"><img src="assets/realizacje/ogrzewanie-podlogowe.jpg" alt="Instalacja współpracująca z ogrzewaniem podłogowym" width="760" height="760" loading="lazy" decoding="async"></picture><figcaption>Współpraca z ogrzewaniem podłogowym</figcaption></figure>
+    </div>
+
+    <div class="yt-block">
+      <h3>Filmy z naszych montaży</h3>
+      <p class="lead">Na kanale YouTube pokazujemy gotowe instalacje od środka — kotłownię, podłączenie i uruchomienie. Kliknij, żeby obejrzeć bez wychodzenia ze strony.</p>
+      <div class="yt-grid">
+<!-- YT:START -->
+      <button class="yt-card" type="button" data-id="dX4bg97QsYc" data-title="Pojedynek Pomp Ciepła: Czeski Acond zmiażdży polskich producentów? (Kołton, Kostrzewa, Defro)" aria-label="Odtwórz film: Pojedynek Pomp Ciepła: Czeski Acond zmiażdży polskich producentów? (Kołton, Kostrzewa, Defro)">
+        <span class="yt-thumb"><img src="https://i.ytimg.com/vi/dX4bg97QsYc/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></span>
+        <span class="yt-name">Pojedynek Pomp Ciepła: Czeski Acond zmiażdży polskich producentów? (Kołton, Kostrzewa, Defro)</span>
+      </button>
+      <button class="yt-card" type="button" data-id="aFT5s6f15Ag" data-title="Pompa ciepła Pnasonic Gen L All-in-One zamontowany! Czysta kotłownia 🔥" aria-label="Odtwórz film: Pompa ciepła Pnasonic Gen L All-in-One zamontowany! Czysta kotłownia 🔥">
+        <span class="yt-thumb"><img src="https://i.ytimg.com/vi/aFT5s6f15Ag/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></span>
+        <span class="yt-name">Pompa ciepła Pnasonic Gen L All-in-One zamontowany! Czysta kotłownia 🔥</span>
+      </button>
+      <button class="yt-card" type="button" data-id="v4km1Mg5jdM" data-title="Panasonic Gen L All-in-One – „Lodóweczka” już na montażu! 🔥 Pompa ciepła" aria-label="Odtwórz film: Panasonic Gen L All-in-One – „Lodóweczka” już na montażu! 🔥 Pompa ciepła">
+        <span class="yt-thumb"><img src="https://i.ytimg.com/vi/v4km1Mg5jdM/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></span>
+        <span class="yt-name">Panasonic Gen L All-in-One – „Lodóweczka” już na montażu! 🔥 Pompa ciepła</span>
+      </button>
+<!-- YT:END -->
+      </div>
+      <div class="social-row" style="margin-top:22px">
+        <a class="social" href="https://www.youtube.com/@EcoHeatAB" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+          Zobacz wszystkie filmy na kanale
+        </a>
+      </div>
     </div>
 
     <div class="fb-block">
@@ -762,15 +811,62 @@
     if (e.target.tagName === 'A') { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); }
   });
 
-  // Ramka Facebooka ma staly rozmiar i szkielet pod spodem, wiec nic nie przeskakuje.
-  // Po jej wczytaniu szkielet znika.
+  // Filmy z YouTube: do klikniecia laduje sie tylko miniatura.
+  // Odtwarzacz (i cokolwiek od Google) dopiero po kliknieciu.
+  document.querySelectorAll('.yt-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      var thumb = card.querySelector('.yt-thumb');
+      if (!thumb || thumb.querySelector('iframe')) return;
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + card.dataset.id + '?autoplay=1&rel=0';
+      f.title = card.dataset.title || 'Film EcoHeat';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      thumb.innerHTML = '';
+      thumb.appendChild(f);
+    });
+  });
+
+  // Wtyczka Facebooka bywa blokowana przez rozszerzenia przegladarki (AdBlock, uBlock,
+  // tryb ochrony w Safari/Firefox). Wtedy ramka i tak zglasza "load", ale zostaje pusta —
+  // dlatego zamiast tego sprawdzamy osobnym zapytaniem, czy facebook.com jest w ogole
+  // osiagalny. Jesli nie, w miejscu wtyczki pokazujemy zwykly odnosnik do fanpage'a.
   (function(){
     var box = document.getElementById('fb-embed');
     if (!box) return;
     var frame = box.querySelector('iframe');
-    frame.addEventListener('load', function(){
-      var sk = box.querySelector('.skeleton');
-      if (sk) sk.remove();
+    var sk = box.querySelector('.skeleton');
+    var settled = false;
+
+    function fallback(){
+      if (settled) return;
+      settled = true;
+      if (frame) frame.remove();
+      if (!sk || !sk.parentNode) {
+        sk = document.createElement('div');
+        sk.className = 'skeleton';
+        box.appendChild(sk);
+      }
+      sk.classList.add('failed');
+      sk.innerHTML =
+        '<svg viewBox="0 0 24 24" fill="#1877f2"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>' +
+        '<b>Posty s\u0105 na naszym fanpage\u2019u</b>' +
+        '<span>Wtyczk\u0119 Facebooka blokuje rozszerzenie Twojej przegl\u0105darki. Wszystkie realizacje zobaczysz bezpo\u015brednio na Facebooku.</span>' +
+        '<a class="social" style="margin-top:6px" href="https://www.facebook.com/ecoheatab" target="_blank" rel="noopener">Otw\u00f3rz nasz fanpage</a>';
+    }
+
+    if (frame) {
+      frame.addEventListener('load', function(){
+        if (!settled && sk && sk.parentNode) sk.remove();
+      });
+    }
+
+    window.addEventListener('load', function(){
+      if (!window.fetch) return;
+      fetch('https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fecoheatab',
+            { mode: 'no-cors', cache: 'no-store' })
+        .then(function(){ settled = true; })
+        .catch(fallback);
     });
   })();
 </script>

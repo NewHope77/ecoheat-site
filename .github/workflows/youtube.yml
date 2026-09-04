@@ -1,0 +1,36 @@
+name: Aktualizacja filmow z YouTube
+
+# Raz na dobe pobiera najnowsze filmy z kanalu @EcoHeatAB (publiczny RSS)
+# i odswieza kafelki na stronie. Bez klucza API.
+on:
+  schedule:
+    - cron: '20 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: youtube-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pobierz najnowsze filmy
+        run: python3 tools/update-youtube.py
+
+      - name: Zapisz zmiany
+        run: |
+          if [ -z "$(git status --porcelain index.html)" ]; then
+            echo "Brak nowych filmow — nic do zrobienia."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Automatyczna aktualizacja filmow z YouTube"
+          git push
